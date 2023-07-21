@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default function App(){
+function App(){
   return(
     <View>
       <Text>Olá Mundo!!!!</Text>
@@ -10,4 +10,6 @@ export default function App(){
 
   );  
 }
+
+export default App;
 
