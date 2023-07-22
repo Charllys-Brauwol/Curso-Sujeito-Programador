@@ -1,34 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 
 function App() {
 
   return (
-    <View style={styles.area}>
+    <View style={{ flex: 1, backgroundColor: '#121212' }}>
 
-      <Text style={[styles.titulo, styles.textoalinhado]}> Charllys </Text>
-      <Text style={styles.titulo}> 29 </Text>
-      <Text style={styles.subtitulo}> texto subtitulo </Text>
+      <View style={{ height: 65, backgroundColor: '#121212' }}></View>
+      <View style={{ flex: 1, backgroundColor: '#ddd' }}></View>
+      <View style={{ height: 65, backgroundColor: '#121212' }}></View>
 
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  area:{
-    marginTop: 50
-  },
-  titulo:{
-    fontSize: 30,
-    color: 'red'
-  }, 
-  textoalinhado: {
-    textAlign: 'center'
-  },
-  subtitulo: {
-    color: 'green',
-    fontSize: 20
-  }
-})
 
 export default App;
