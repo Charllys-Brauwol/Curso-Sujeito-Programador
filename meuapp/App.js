@@ -1,33 +1,24 @@
-import React from "react";
-import { View, Text, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Button, Alert } from "react-native";
 
 function App() {
+  const [nome, setNome] = useState('Charllys');
+  const [idade, setIdade] = useState(20);
+
+  function entrar(nome, idade){
+    setNome(nome);
+    setIdade(idade);
+  }
 
   return (
-    <View>
-      <Text>Olá Mundo!</Text>
-      <Text style={{ color: 'red', fontSize: 25, margin: 15 }}>Meu primeiro App!</Text>
-      <Text style={{ fontSize: 18, color: 'green' }}>
-        Sujeito Programador
-      </Text>
+    <View style= {{ marginTop: 25 }}>
 
-      <Logo largura={350} altura={350} fulano="Brauwol"/>
-
+      <Button title="Mudar nome" onPress={ () => entrar( 'Cavalcante', 35) }/>
+      <Text style={{ fontSize: 20 }}> {nome} </Text>
+      <Text style={{ fontSize: 17}}> {idade} </Text>
+  
     </View>
   );
 }
 
 export default App;
-
-//Componente a primeira letra é maiúscula 
-function Logo(props) {
-  
-  let img = 'https://sujeitoprogramador.com/reactlogo.png';
-  
-  return (
-    <View>
-  <Image source={{ uri: img }} style={{ width: props.largura, height: props.altura }} />
-  <Text> { props.fulano } </Text>
-  </View>
-);
-}
