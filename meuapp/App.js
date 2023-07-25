@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, Button, Alert } from "react-native";
 
 function App() {
 
   const [nome, setNome] = useState('');
+  const [input, setInput] = useState('');
 
-  function pegaNome(texto) {
+  function entrar() {
 
-    if(texto.length > 0){
-      setNome('Bem Vindo ' + texto);
-    } else {
-      setNome('');
+    if(input === ''){
+      alert('Digite seu nome!')
+      return;
     }
-
+    setNome(`Bem vindo: ` + input);
   }
 
   return (
@@ -21,8 +21,10 @@ function App() {
       <TextInput
         style={styles.input}
         placeholder="Digite seu nome..."
-        onChangeText={(text) => pegaNome(text)}
+        onChangeText={(text) => setInput(text)}
       />
+
+      <Button title="Entrar" onPress={entrar} />
 
       <Text style={styles.texto}>{nome}</Text>
 
@@ -43,7 +45,8 @@ const styles = StyleSheet.create({
   },
   texto: {
     textAlign: 'center',
-    fontSize: 30
+    fontSize: 30, 
+    marginTop: 15
   }
 });
 
