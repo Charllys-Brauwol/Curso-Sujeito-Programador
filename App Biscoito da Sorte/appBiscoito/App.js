@@ -38,7 +38,10 @@ function App() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./src/backgroud.jpg')} style={styles.imageBackground}>
+      <ImageBackground
+        source={require('./src/backgroud.jpg')}
+        style={styles.imageBackground}
+      >
 
         <Image source={img}
           style={styles.img}
