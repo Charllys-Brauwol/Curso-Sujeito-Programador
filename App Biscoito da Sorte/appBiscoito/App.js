@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, ImageBackground } from "react-native";
 
 function App() {
 
@@ -26,8 +26,8 @@ function App() {
 
   function quebraBiscoito() {
     let numeroAleatorio = Math.floor(Math.random() * frases.length)
-    
-    setTextoFrase(' "' + frases[numeroAleatorio] +'" ');
+
+    setTextoFrase(' "' + frases[numeroAleatorio] + '" ');
     setImg(require('./src/biscoitoAberto.png'));
   }
 
@@ -38,24 +38,26 @@ function App() {
 
   return (
     <View style={styles.container}>
-      <Image source={img}
-        style={styles.img}
-      />
+      <ImageBackground source={require('./src/backgroud.jpg')} style={styles.imageBackground}>
 
-      <Text style={styles.textofrase}> {textoFrase} </Text>
+        <Image source={img}
+          style={styles.img}
+        />
 
-      <TouchableOpacity style={styles.botao} onPress={quebraBiscoito}>
-        <View style={styles.btnArea}>
-          <Text style={styles.btnTexto}>Quebrar Biscoito</Text>
-        </View>
-      </TouchableOpacity>
+        <Text style={styles.textofrase}> {textoFrase} </Text>
 
-      <TouchableOpacity style={[styles.botao, { marginTop: 15, borderColor: '#121212' }]} onPress={ reiniciarBiscoito }>
-        <View style={styles.btnArea}>
-          <Text style={[styles.btnTexto, { color: '#121212' }]}>Reiniciar Biscoito</Text>
-        </View>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.botao} onPress={quebraBiscoito}>
+          <View style={styles.btnArea}>
+            <Text style={styles.btnTexto}>Quebrar Biscoito</Text>
+          </View>
+        </TouchableOpacity>
 
+        <TouchableOpacity style={[styles.botao, { marginTop: 15, borderColor: '#fff' }]} onPress={reiniciarBiscoito}>
+          <View style={styles.btnArea}>
+            <Text style={[styles.btnTexto, { color: '#fff' }]}>Reiniciar Biscoito</Text>
+          </View>
+        </TouchableOpacity>
+      </ImageBackground>
     </View>
   );
 }
@@ -71,8 +73,8 @@ const styles = StyleSheet.create({
     height: 230,
   },
   textofrase: {
-    fontSize: 20,
-    color: '#dd7b22',
+    fontSize: 22,
+    color: '#fff',
     margin: 30,
     fontStyle: 'italic',
     textAlign: 'center'
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
   botao: {
     width: 230,
     height: 50,
-    borderColor: '#dd7b22',
+    borderColor: '#fff',
     borderWidth: 2,
     borderRadius: 25
   },
@@ -92,8 +94,16 @@ const styles = StyleSheet.create({
   btnTexto: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#dd7b22'
-  }
+    color: '#fff'
+  },
+  imageBackground: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    alignItems: "center",
+    height: '100%',
+    width: '100%'
+  },
 })
 
 export default App;
