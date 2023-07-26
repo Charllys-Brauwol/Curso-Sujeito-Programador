@@ -3,8 +3,8 @@
 <br><br>
 <h1> Descrição do Projeto </h1>
 
-Projeto feito com a finalidade de desenvolver habilidades básicas de utilização das linguagens React Native e JavaScript.
-As próximas subseções descrevem o código e suas funcionalidades, sendo divididos em:
+A finalidade desse projeto é desenvolver habilidades básicas de utilização das linguagens React Native e JavaScript.
+<br>As próximas subseções descrevem o código e suas funcionalidades, sendo divididas em:
 - Componentes Importados.
 - Função App.
 - Função de quebrar biscoito.
@@ -14,7 +14,8 @@ As próximas subseções descrevem o código e suas funcionalidades, sendo divid
   - Imagem do biscoito.
   - TouchableOpacity.
 - StyleSheet.
-<h3>Componentes Importados</h3> 
+<br>
+<h3 align="center">Componentes Importados</h3> 
 
 
 <br><br>
