@@ -5,7 +5,7 @@ function Pessoas(props) {
     return (
         <View style={styles.areaPessoa}>
             <Text style={styles.textoPessoas}>{props.data.nome}</Text>
-            <Text style={styles.textoPessoas}>{props.data.idade}</Text>
+            <Text style={styles.textoPessoas}>{props.data.idade} anos</Text>
             <Text style={styles.textoPessoas}>{props.data.email}</Text>
         </View>
     );
