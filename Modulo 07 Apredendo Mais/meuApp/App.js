@@ -1,26 +1,40 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 
-import Pessoas from "./src/Pessoa/index";
+import { Picker } from '@react-native-picker/picker';
+
 
 export default function App() {
 
-  const [feed, setFeed] = useState([
-    { id: 1, nome: 'Charllys', idade: 30, email: 'brauwol@hgfa' },
-    { id: 2, nome: 'Lucas', idade: 23, email: 'lucas@hgfa' },
-    { id: 3, nome: 'Claudio', idade: 33, email: 'claudio@hgfa' },
-    { id: 4, nome: 'Xines', idade: 39, email: 'xines@hgfa' },
-    { id: 5, nome: 'Jose', idade: 22, email: 'jose@hgfa' },
-  ]);
+  const [carroSelecionado, setCarroSelecionado] = useState(0);
+  const [carros, setCarros] = useState([
+    {key: 1, nome:'Golf 1.6', valor: 62.000},
+    {key: 2, nome:'Hilux 2.6', valor: 112.000},
+    {key: 3, nome:'Gol 1.0', valor: 35.000},
+    {key: 4, nome:'Palio 1.2', valor: 32.000},
+    {key: 5, nome:'BMW 3.2', valor: 232.000}
+  ])
+
+  let carrosItem = carros.map( (v, k) =>{
+    return <Picker.Item key={k} value={k} label= {v.nome} />
+  })
+
   return (
     <View style={styles.container}>
 
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={feed}
-        renderItem={({ item }) => <Pessoas data={item} />}
-      />
+      <Picker
+        selectedValue={carroSelecionado}
+        onValueChange={(itenValue, itemIndex) => {
+          setCarroSelecionado(itenValue)
+        }}
+      >
+        
+        {carrosItem}
+        
+      </Picker>
 
+      <Text style={styles.carros}>Carro: {carros[carroSelecionado].nome}</Text>
+      <Text style={styles.carros}>R$: {carros[carroSelecionado].valor.toFixed(3)}</Text>
     </View>
   );
 }
@@ -28,6 +42,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 35,
   },
+  carros: {
+    marginTop: 15,
+    fontSize: 25,
+    marginLeft: 15
+  }
 })
 
