@@ -1,40 +1,26 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-
-import { Picker } from '@react-native-picker/picker';
+import Slider from "@react-native-community/slider";
 
 
 export default function App() {
-
-  const [carroSelecionado, setCarroSelecionado] = useState(0);
-  const [carros, setCarros] = useState([
-    {key: 1, nome:'Golf 1.6', valor: 62.000},
-    {key: 2, nome:'Hilux 2.6', valor: 112.000},
-    {key: 3, nome:'Gol 1.0', valor: 35.000},
-    {key: 4, nome:'Palio 1.2', valor: 32.000},
-    {key: 5, nome:'BMW 3.2', valor: 232.000}
-  ])
-
-  let carrosItem = carros.map( (v, k) =>{
-    return <Picker.Item key={k} value={k} label= {v.nome} />
-  })
+  const [valor, setValor] = useState(50);
 
   return (
     <View style={styles.container}>
-
-      <Picker
-        selectedValue={carroSelecionado}
-        onValueChange={(itenValue, itemIndex) => {
-          setCarroSelecionado(itenValue)
+      <Slider
+        minimumValue={0}
+        maximumValue={100}
+        value={valor}
+        onValueChange={(valorSelecionado) => {
+          setValor(valorSelecionado)
         }}
-      >
-        
-        {carrosItem}
-        
-      </Picker>
+        minimumTrackTintColor="#000FFF"
+        maximumTrackTintColor="#FF0000"
+        thumbTintColor="#FF0000"
+      />
 
-      <Text style={styles.carros}>Carro: {carros[carroSelecionado].nome}</Text>
-      <Text style={styles.carros}>R$: {carros[carroSelecionado].valor.toFixed(3)}</Text>
+        <Text style={{ textAlign: 'center', fontSize: 25 }}>Valor: {valor.toFixed(0)}</Text>
     </View>
   );
 }
@@ -44,10 +30,5 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 35,
   },
-  carros: {
-    marginTop: 15,
-    fontSize: 25,
-    marginLeft: 15
-  }
 })
 
