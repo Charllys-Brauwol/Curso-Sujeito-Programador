@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Switch, Button } from "react-native";
+import { View, Text, TextInput, StyleSheet, Switch, Button, ScrollView } from "react-native";
 
 import { Picker } from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
@@ -62,83 +62,86 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.nomeBanco}>Banco do Brauwol</Text>
-      <TextInput
-        style={styles.textos}
-        placeholder='Digite seu nome!'
-        onChangeText={(textoNome) => setInputNome(textoNome)}
-      />
+    <ScrollView>
+      <View style={styles.container}>
 
-      <TextInput
-        style={styles.textos}
-        placeholder='Digite sua idade!'
-        onChangeText={(textoIdade) => setInputIdade(textoIdade)}
-      />
+        <Text style={styles.nomeBanco}>Banco do Brauwol</Text>
+        <TextInput
+          style={styles.textos}
+          placeholder='Digite seu nome!'
+          onChangeText={(textoNome) => setInputNome(textoNome)}
+        />
 
-      <Picker
-        style={styles.picker}
-        selectedValue={escolherSexo}
-        onValueChange={(itemValue, itemIndex) => {
-          setEscolherSexo(itemValue)
-        }}
-      >
-        {sexoItens}
-      </Picker>
+        <TextInput
+          style={styles.textos}
+          placeholder='Digite sua idade!'
+          onChangeText={(textoIdade) => setInputIdade(textoIdade)}
+        />
 
-      <Picker
-        style={styles.picker}
-        selectedValue={escolherPais}
-        onValueChange={(itemValue, itemIndex) => {
-          setEscolherPais(itemValue)
-        }}
-      >
-        {paisItens}
-      </Picker>
+        <Picker
+          style={styles.picker}
+          selectedValue={escolherSexo}
+          onValueChange={(itemValue, itemIndex) => {
+            setEscolherSexo(itemValue)
+          }}
+        >
+          {sexoItens}
+        </Picker>
 
-      <Slider
-        style={styles.slider}
-        minimumValue={1000}
-        maximumValue={5000}
-        minimumTrackTintColor="#000000"
-        maximumTrackTintColor="#000FFF"
-        thumbTintColor="#000000"
-        value={limite}
-        onValueChange={(valoSelecionado) => setLimite(valoSelecionado)}
-      />
+        <Picker
+          style={styles.picker}
+          selectedValue={escolherPais}
+          onValueChange={(itemValue, itemIndex) => {
+            setEscolherPais(itemValue)
+          }}
+        >
+          {paisItens}
+        </Picker>
 
-      <Text style={styles.textIdade}>Você quer: R$ {limite.toFixed(2)} de limite. </Text>
+        <Slider
+          style={styles.slider}
+          minimumValue={1000}
+          maximumValue={5000}
+          minimumTrackTintColor="#000000"
+          maximumTrackTintColor="#000FFF"
+          thumbTintColor="#000000"
+          value={limite}
+          onValueChange={(valoSelecionado) => setLimite(valoSelecionado)}
+        />
 
-      <Text style={styles.textoEstudante}>
-        Estudante: {estudante ? 'SIM' : 'NÃO'}
-      </Text>
+        <Text style={styles.textIdade}>Você quer: R$ {limite.toFixed(2)} de limite. </Text>
 
-      <Switch
-        value={estudante}
-        onValueChange={(valorEstudante) => setEstudante(valorEstudante)}
-        trackColor={{ false: '#ff0000', true: '#00ff00' }}
-        thumbColor={estudante ? '#00ff00' : '#ff0000'}
-        style={styles.switchEstudante}
-      />
+        <Text style={styles.textoEstudante}>
+          Estudante: {estudante ? 'SIM' : 'NÃO'}
+        </Text>
 
-      <Text style={styles.textoEstudante}>
-        Trabalha: {empregado ? 'SIM' : 'NÃO'}
-      </Text>
+        <Switch
+          value={estudante}
+          onValueChange={(valorEstudante) => setEstudante(valorEstudante)}
+          trackColor={{ false: '#ff0000', true: '#00ff00' }}
+          thumbColor={estudante ? '#00ff00' : '#ff0000'}
+          style={styles.switchEstudante}
+        />
 
-      <Switch
-        value={empregado}
-        onValueChange={(valorEmpregado) => setEmpregado(valorEmpregado)}
-        trackColor={{ false: '#ff0000', true: '#00ff00' }}
-        thumbColor={empregado ? '#00ff00' : '#ff0000'}
-        style={styles.switchEstudante}
-      />
+        <Text style={styles.textoEstudante}>
+          Trabalha: {empregado ? 'SIM' : 'NÃO'}
+        </Text>
 
-      <Button
-        title="Entrar"
-        onPress={informacoes}
-      />
+        <Switch
+          value={empregado}
+          onValueChange={(valorEmpregado) => setEmpregado(valorEmpregado)}
+          trackColor={{ false: '#ff0000', true: '#00ff00' }}
+          thumbColor={empregado ? '#00ff00' : '#ff0000'}
+          style={styles.switchEstudante}
+        />
 
-    </View>
+        <Button
+          title="Entrar"
+          onPress={informacoes}
+        />
+
+      </View>
+    </ScrollView>
   );
 }
 
