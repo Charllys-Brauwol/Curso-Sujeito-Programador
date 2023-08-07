@@ -15,9 +15,17 @@ export default function App() {
     { key: 1, nome: 'Masculino' },
     { key: 2, nome: 'Feminino' },
   ])
+  const [escolherPais, setEscolherPais] = useState(0);
+  const [pais, setPais] = useState([
+    { key: 3, pais: 'Brazil' },
+    { Key: 4, pais: 'EUA' },
+    { key: 5, pais: 'Meu país Ceará' }
+  ])
+
 
   const [limite, setLimite] = useState(1000);
   const [estudante, setEstudante] = useState(false);
+  const [empregado, setEmpregado] = useState(false);
 
   let sexoItens = sexo.map((itens, posição) => {
     return <Picker.Item
@@ -27,13 +35,21 @@ export default function App() {
     />
   })
 
+  let paisItens = pais.map((itens, posição) => {
+    return <Picker.Item
+      key={posição}
+      value={posição}
+      label={itens.pais}
+    />
+  })
+
 
   function informacoes() {
 
     if (inputNome === '' || inputIdade === '') {
-      alert ('Preencha todos os campos');
+      alert('Preencha todos os campos');
       return;
-    } 
+    }
 
     setNome('Bem vindo: ' + inputNome);
     setIdade('Idade: ' + inputIdade);
@@ -70,6 +86,16 @@ export default function App() {
         {sexoItens}
       </Picker>
 
+      <Picker
+        style={styles.picker}
+        selectedValue={escolherPais}
+        onValueChange={(itemValue, itemIndex) => {
+          setEscolherPais(itemValue)
+        }}
+      >
+        {paisItens}
+      </Picker>
+
       <Slider
         style={styles.slider}
         minimumValue={1000}
@@ -92,6 +118,18 @@ export default function App() {
         onValueChange={(valorEstudante) => setEstudante(valorEstudante)}
         trackColor={{ false: '#ff0000', true: '#00ff00' }}
         thumbColor={estudante ? '#00ff00' : '#ff0000'}
+        style={styles.switchEstudante}
+      />
+
+      <Text style={styles.textoEstudante}>
+        Trabalha: {empregado ? 'SIM' : 'NÃO'}
+      </Text>
+
+      <Switch
+        value={empregado}
+        onValueChange={(valorEmpregado) => setEmpregado(valorEmpregado)}
+        trackColor={{ false: '#ff0000', true: '#00ff00' }}
+        thumbColor={empregado ? '#00ff00' : '#ff0000'}
         style={styles.switchEstudante}
       />
 
