@@ -51,13 +51,15 @@ export default function App() {
       return;
     }
 
-    setNome('Bem vindo: ' + inputNome);
+    setNome('Nome: ' + inputNome);
     setIdade('Idade: ' + inputIdade);
     alert(`${nome}
     \n${idade}
-    \n${sexo[escolherSexo].nome}
-    \n${limite}
-    \n${estudante ? 'SIM' : 'NÃO'}
+    \nSexo: ${sexo[escolherSexo].nome}
+    \nPaís: ${pais[escolherPais].pais}
+    \nLimite: ${limite}
+    \nEstudante: ${estudante ? 'SIM' : 'NÃO'}
+    \nTrabalha: ${empregado ? 'SIM' : 'NÃO'}
     `);
   }
 
