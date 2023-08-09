@@ -2,8 +2,18 @@ import React from "react";
 import { View, Text, StyleSheet, Image, Touchable, TouchableOpacity } from 'react-native';
 
 export default function List(props) {
-    function carregaIcone(likeada){
+    function carregaIcone(likeada) {
         return likeada ? require('../img/likeada.png') : require('../img/like.png')
+    }
+
+    function mostraLikes(likers) {
+        if (likers === 0) {
+            return;
+        }
+
+        return (
+            <Text style={styles.curtidas} >{likers} {likers > 1 ? 'curtidas' : 'curtida'}</Text>
+        )
     }
 
     return (
@@ -45,8 +55,18 @@ export default function List(props) {
                         style={styles.iconLike}
                     />
                 </TouchableOpacity>
-                
+
             </View>
+
+            {mostraLikes(props.data.likers)}
+
+            <Text style={styles.nomeRodape}>
+                {props.data.nome}
+            </Text>
+
+            <Text style={styles.descricao}>
+                {props.data.descricao}
+            </Text>
 
         </View>
     );
@@ -83,5 +103,19 @@ const styles = StyleSheet.create({
     },
     btnSend: {
         paddingLeft: 5
-    }
+    },
+    curtidas: {
+        fontWeight: 'bold',
+        marginLeft: 5,
+    },
+    nomeRodape: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        paddingLeft: 5,
+    },
+    descricao: {
+        paddingLeft: 5,
+        paddingBottom: 10,
+        fontSize: 15
+    },
 });
