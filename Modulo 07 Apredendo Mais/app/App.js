@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
 export default function App() {
   const [contador, setContador] = useState(0);
+
+  useEffect(() => {
+    console.log('Montou');
+
+    return () => console.log('Desmontado');
+  }, []);
 
   return (
     <View style={styles.container}>
