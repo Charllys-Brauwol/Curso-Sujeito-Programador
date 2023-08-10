@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -25,6 +25,11 @@ export default function App() {
     setInput('');
   }
 
+  //const letrasNome = nome.length;
+  const letrasNome = useMemo(() => {
+    return nome.length;
+  }, [nome]);
+
 
   return (
     <View style={styles.container}>
@@ -43,6 +48,7 @@ export default function App() {
       </View>
 
       <Text style={styles.nome}>{nome}</Text>
+      <Text style={styles.nome}>Possui: {letrasNome} letras</Text>
 
     </View>
   );
