@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from "react-native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
   const [input, setInput] = useState('');
   const [nome, setNome] = useState('');
+
+  const inputRef = useRef(null);
 
   useEffect(() => {
     async function loadData() {
@@ -30,6 +32,9 @@ export default function App() {
     return nome.length;
   }, [nome]);
 
+  function chamarInoput() {
+    inputRef.current.clear();
+  }
 
   return (
     <View style={styles.container}>
@@ -39,6 +44,7 @@ export default function App() {
           style={styles.input}
           value={input}
           onChangeText={(texto) => setInput(texto)}
+          ref={inputRef}
         />
 
         <TouchableOpacity onPress={gravaNome}>
@@ -49,6 +55,10 @@ export default function App() {
 
       <Text style={styles.nome}>{nome}</Text>
       <Text style={styles.nome}>Possui: {letrasNome} letras</Text>
+
+      <TouchableOpacity onPress={chamarInoput}>
+        <Text>Limpar Texto</Text>
+      </TouchableOpacity>
 
     </View>
   );
