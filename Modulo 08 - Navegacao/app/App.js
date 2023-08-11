@@ -1,22 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-
-export default function App() {
-
-  return (
-    <View style={styles.container}>
-
-      <Text>Sujeito Programador</Text>
-
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-})
+import Home from "./src/pages/Home";
