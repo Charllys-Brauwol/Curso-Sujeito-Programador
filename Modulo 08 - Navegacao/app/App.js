@@ -1,46 +1,65 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Home from "./src/pages/Home";
 import Sobre from "./src/pages/Sobre";
 import Contato from "./src/pages/Contato";
 
-const Stack = createNativeStackNavigator();
+import Feather from 'react-native-vector-icons/Feather';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarHideOnKeyboard: true,
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: '#fff',
 
-        <Stack.Screen
+          tabBarStyle: {
+            backgroundColor: '#202225',
+            borderTopWidth: 0
+          }
+        }}
+      >
+
+        <Tab.Screen
           name="Home"
           component={Home}
           options={{
-            title: 'Tela Inicio',
-            headerStyle: {
-              backgroundColor: '#121212'
-            },
-            headerTintColor: '#fff',
-            headerShown: false
+            tabBarIcon: ({ color, size }) => {
+              return <Feather name='home' color={color} size={size} />
+            }
           }}
         />
 
-        <Stack.Screen
+        <Tab.Screen
           name="Sobre"
           component={Sobre}
           options={{
-            title: 'Página Sobre'
+            tabBarIcon: ({ color, size }) => {
+              return <Feather name='file-text' color={color} size={size} />
+            }
           }}
         />
 
-        <Stack.Screen
-          name="Contato"
+        <Tab.Screen
+          name="Contatos"
           component={Contato}
+          options={{
+            //headerShown: false,
+            tabBarIcon: ({ color, size }) => {
+              return <Feather name='phone-call' color={color} size={size} />
+            }
+          }}
         />
 
-      </Stack.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }

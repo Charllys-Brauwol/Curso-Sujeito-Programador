@@ -7,7 +7,7 @@ export default function Home() {
     const navigation = useNavigation();
 
     function navegaSobre() {
-        navigation.navigate('Sobre', { nome: 'Charllys', email: 'Charllts@brauwol'});
+        navigation.navigate('Sobre');
     }
 
     return (
@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center', 
+        backgroundColor: '#ff0000'
     }
 })
 
