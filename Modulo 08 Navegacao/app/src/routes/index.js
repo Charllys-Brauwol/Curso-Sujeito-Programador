@@ -10,11 +10,7 @@ const Drawer = createDrawerNavigator();
 
 export default function Routes(){
   return(
-    <Drawer.Navigator 
-      screenOptions={{
-        headerShown: false
-      }}
-    >
+    <Drawer.Navigator>
       <Drawer.Screen
         name="HomeStack"
         component={StackRoutes}
@@ -30,5 +26,5 @@ export default function Routes(){
         component={Contato}
       />
     </Drawer.Navigator>
-  )
+  );
 }
